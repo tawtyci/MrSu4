@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_2"
+    tools:context=".PersonalAccount">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_above="@+id/butt_dowland_im"
+        android:layout_alignStart="@+id/butt_dowland_im"
+        android:layout_marginStart="-107dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="4dp"
+        app:srcCompat="@drawable/img_1" />
+
+    <Button
+        android:id="@+id/butt_dowland_im"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="104dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginBottom="456dp"
+        android:backgroundTint="@color/purple"
+        android:text="Добавить фотографию"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_id"
+        android:layout_width="223dp"
+        android:layout_height="32dp"
+        android:layout_above="@+id/b_nav"
+        android:layout_alignStart="@+id/tv_FIO"
+        android:layout_alignEnd="@+id/tv_FIO"
+        android:layout_marginStart="11dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="164dp"
+        android:gravity="center"
+        android:textColor="#9370DB"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_FIO"
+        android:layout_width="348dp"
+        android:layout_height="107dp"
+        android:layout_above="@+id/b_nav"
+        android:layout_alignStart="@+id/butt_dowland_im"
+        android:layout_alignEnd="@+id/butt_dowland_im"
+        android:layout_marginStart="-72dp"
+        android:layout_marginEnd="-67dp"
+        android:layout_marginBottom="252dp"
+        android:gravity="center"
+        android:textColor="#9370DB"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/b_nav"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="@color/purple"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/buttom_menu" />
+
+
+</RelativeLayout>
