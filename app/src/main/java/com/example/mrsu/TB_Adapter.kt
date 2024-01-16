@@ -17,6 +17,26 @@ class TB_Adapter : RecyclerView.Adapter<TB_Adapter.TbHolder>() {
             twObject.text = timeTable.TimeTable?.Lessons?.get(position)?.Disciplines?.get(0)?.Title
             tvFio.text= timeTable.TimeTable?.Lessons?.get(position)?.Disciplines?.get(0)?.Teacher?.UserName
             Picasso.get().load(timeTable.TimeTable?.Lessons?.get(position)?.Disciplines?.get(0)?.Teacher?.Photo?.UrlSource).into(imPhoto)
+
+            val para = timeTable.TimeTable?.Lessons?.get(position)?.Number
+            val time = table(para)
+
+            val cabinet = timeTable.TimeTable?.Lessons?.get(position)?.Disciplines?.get(0)?.Auditorium?.Number
+
+            ShTime.text = "$time , ${cabinet.toString()}"
+        }
+
+        fun table(n: Byte?): String {
+            val times: Map<Byte, String> = mapOf(
+                1.toByte() to "8:30 - 10:00",
+                2.toByte() to "10:10 - 11:40",
+                3.toByte() to "12:00 - 13:30",
+                4.toByte() to "13:45 - 15:15",
+                5.toByte() to "15:25 - 16:55",
+                6.toByte() to "17:05 - 18:35",
+                7.toByte() to "18:40 - 20:10"
+            )
+            return times[n] ?: "error"
         }
     }
 
@@ -37,4 +57,6 @@ class TB_Adapter : RecyclerView.Adapter<TB_Adapter.TbHolder>() {
         tbList.add(timeTable)
         notifyDataSetChanged()
     }
+
+
 }
