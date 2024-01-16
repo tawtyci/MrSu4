@@ -71,7 +71,7 @@
         android:background="@color/purple"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
-        app:menu="@menu/buttom_menu" />
+        app:menu="@menu/menushka" />
 
 
 </RelativeLayout>

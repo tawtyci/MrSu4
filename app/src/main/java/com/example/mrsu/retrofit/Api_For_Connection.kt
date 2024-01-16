@@ -12,7 +12,7 @@ import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Query
 
-interface MainApi {
+interface Api_For_Connection {
     @FormUrlEncoded
     @POST("OAuth/token")
     suspend fun getAccessToken(@Field("grant_type") grantType: String,

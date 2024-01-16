@@ -7,8 +7,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mrsu.domain.models.TimeTableToDate
-import com.example.mrsu.databinding.ActivityMainTbBinding
-import com.example.mrsu.retrofit.MainApi
+import com.example.mrsu.databinding.SheduleOfDisciplinesBinding
+import com.example.mrsu.retrofit.Api_For_Connection
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,17 +23,17 @@ import java.util.Locale
 
 
 class SheduleOfDisciplines : AppCompatActivity() {
-    lateinit var binding: ActivityMainTbBinding
-    private val adapterCal = TB_Adapter()
-    private val adapterTb = TB_Adapter()
+    lateinit var binding: SheduleOfDisciplinesBinding
+    private val adapterCal = Adapter_For_Shedule()
+    private val adapterTb = Adapter_For_Shedule()
     val dateFormat = "MMMM dd, yyyy"
     val sdf = java.text.SimpleDateFormat(dateFormat, Locale.getDefault())
     var date = sdf.format(Date())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_tb)
-        binding = ActivityMainTbBinding.inflate(layoutInflater)
+        setContentView(R.layout.shedule_of_disciplines)
+        binding = SheduleOfDisciplinesBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.buttCalendar.text = date
         val token = "Bearer "+ intent.getStringExtra("token").toString()
@@ -49,7 +49,7 @@ class SheduleOfDisciplines : AppCompatActivity() {
             .baseUrl("https://papi.mrsu.ru")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create()).build()
-        val mainApi = retrofit.create(MainApi::class.java)
+        val mainApi = retrofit.create(Api_For_Connection::class.java)
         CoroutineScope(Dispatchers.IO).launch {
             val timetable = mainApi.getTimeTable(date, token)
             runOnUiThread {
@@ -117,7 +117,7 @@ class SheduleOfDisciplines : AppCompatActivity() {
         }
 
     }
-    private fun updateAdapter(adapter: TB_Adapter, newData: TimeTableToDate) { // Замените YourTimetableDataType на тип данных вашего расписания
+    private fun updateAdapter(adapter: Adapter_For_Shedule, newData: TimeTableToDate) { // Замените YourTimetableDataType на тип данных вашего расписания
         binding.facInfo.text = newData.FacultyName + "(${newData.Group})"
         binding.apply {
             RWCalendar.layoutManager = LinearLayoutManager(this@SheduleOfDisciplines)
@@ -125,7 +125,7 @@ class SheduleOfDisciplines : AppCompatActivity() {
             adapter.addTB(newData)
         }
     }
-    private fun updateAdapterUmu(adapter: TB_Adapter, newData: TimeTableToDate) { // Замените YourTimetableDataType на тип данных вашего расписания
+    private fun updateAdapterUmu(adapter: Adapter_For_Shedule, newData: TimeTableToDate) { // Замените YourTimetableDataType на тип данных вашего расписания
         binding.YMYName.text = newData.FacultyName + "(${newData.Group})"
         binding.apply {
             RWTb.layoutManager = LinearLayoutManager(this@SheduleOfDisciplines)

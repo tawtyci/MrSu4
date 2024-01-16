@@ -8,7 +8,7 @@ import com.example.mrsu.domain.models.TimeTableToDate
 import com.example.mrsu.databinding.ShablonTimeTableBinding
 import com.squareup.picasso.Picasso
 
-class TB_Adapter : RecyclerView.Adapter<TB_Adapter.TbHolder>() {
+class Adapter_For_Shedule : RecyclerView.Adapter<Adapter_For_Shedule.TbHolder>() {
     val tbList = ArrayList<TimeTableToDate>()
 
     class TbHolder(item: View):RecyclerView.ViewHolder(item) {

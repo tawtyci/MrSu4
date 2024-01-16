@@ -3,8 +3,8 @@ package com.example.mrsu
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mrsu.databinding.ActivityMainBinding
-import com.example.mrsu.retrofit.MainApi
+import com.example.mrsu.databinding.HomePageBinding
+import com.example.mrsu.retrofit.Api_For_Connection
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,11 +15,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class HomePage : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
+    lateinit var binding: HomePageBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(R.layout.home_page)
+        binding = HomePageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val interceptor = HttpLoggingInterceptor()
@@ -35,7 +35,7 @@ class HomePage : AppCompatActivity() {
             .client(client)
             .addConverterFactory(GsonConverterFactory.create()).build()
 
-        val mainApi = retrofit.create(MainApi::class.java)
+        val mainApi = retrofit.create(Api_For_Connection::class.java)
         binding.buttReg.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                try {
